@@ -1,0 +1,32 @@
+{% extends 'base_admin.html' %}
+
+{% block content-data %}
+<a
+		class="btn btn-primary dropdown-toggle m-2"
+		data-bs-toggle="dropdown"
+		aria-expanded="false">{{i.name}}
+</a>
+{% endblock content-data %}
+
+{% block admin-content %}
+
+<!--Add Categories Form-->
+
+<div class="admin-content">
+
+	<form action="{% url 'categories' %}" method="post">
+		{% csrf_token %}
+		{% for i in form %}
+		<div class="mt-2">
+			<label for="{{i.id_for_label}}">{{i}}</label>
+		</div>
+		{% endfor %}
+		<button type="submit" class="btn btn-primary mt-2 mb-2">Add</button>
+	</form>
+</div>
+
+{% endblock admin-content %}
+
+{% block scripts %}
+<!--<script src="/static/categories.js"></script>-->
+{% endblock scripts %}

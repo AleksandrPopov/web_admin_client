@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+
+
+	<div class="content-div col-md-8">
+		<p class="text-center">Services</p>
+		{% if services|length > 0 %}
+		<div class="row">
+			{% for i in services %}
+			<a
+					class="btn btn-primary dropdown-toggle col-3 m-2"
+					data-bs-toggle="dropdown"
+					aria-expanded="false">{{i.name}}
+			</a>
+			<ul class="dropdown-menu col-1">
+				<li>
+					<a href="#" class="dropdown-item">Edit</a>
+					<a href="#" class="dropdown-item">Delete</a>
+				</li>
+			</ul>
+			{% endfor %}
+		</div>
+		{% else %}
+		<p class="text-center">Nope</p>
+		{% endif %}
+	</div>
+	<div class="content-div col-md-4">
+		<form action="{% url 'services' %}" method="post">
+			{% csrf_token %}
+			{% for i in form %}
+			<div class="mt-2">
+				<label for="{{i.id_for_label}}">{{i}}</label>
+			</div>
+			{% endfor %}
+			<button type="submit" class="btn btn-primary mt-2 mb-2">Add</button>
+		</form>
+	</div>
+</div>
+
+{% block scripts %}
+<script src="/static/address.js"></script>
+{% endblock scripts %}
+
+{% endblock content %}

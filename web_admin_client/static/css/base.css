@@ -1,0 +1,50 @@
+@import "reset.css";
+
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #626262;
+    min-width: 320px;
+}
+
+.main-div {
+    background-color: #929292;
+    border: 1px solid black;
+    margin: 0px;
+}
+
+.menu-content-div {
+    background-color: #b2b2b2;
+    border: 1px solid #000000;
+}
+
+.content-form-div {
+    background-color: #d3d3d3;
+    border: 1px solid #000000;
+    margin: 5px;
+}
+
+.admin-content {
+    background-color: #f3f3f3;
+    border: 1px solid #000000;
+    margin: 5px;
+}
+
+.admin-item {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    margin: 5px;
+}
+
+
+.admin-menu-text {
+    text-decoration: none;
+    list-style: none;
+}
+p {
+    margin: 5px;
+    /*font-size: 20px;*/
+}
+.admin-menu-item {
+    margin: 1em;
+}

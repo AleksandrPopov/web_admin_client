@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block admin-menu %}
+	{% for i in menu %}
+	<p class="fw-lighter ld"><a href="{{ i.url }}" class="admin-menu-text">{{i.title}}</a></p>
+	{% endfor %}
+{% endblock admin-menu %}
+
+{% block admin-content %}
+<h2>{{ title }}</h2>
+
+<!--Content-->
+
+<div class="content-div">
+	{% if address|length > 0 %}
+	<div class="row">
+		{% for i in address %}
+		<a
+				class="btn btn-primary dropdown-toggle col-3 m-2"
+				data-bs-toggle="dropdown"
+				aria-expanded="false">{{i.street}}
+		</a>
+		<ul class="dropdown-menu col-1">
+			<li>
+				<a href="#" class="dropdown-item">Edit</a>
+				<a href="#" class="dropdown-item">Delete</a>
+			</li>
+		</ul>
+		{% endfor %}
+	</div>
+	{% else %}
+	<p class="text-center">Nope</p>
+	{% endif %}
+</div>
+
+<!--Add Address Form-->
+
+<!--<div class="content-div">-->
+<!--	<form action="{% url 'address' %}" method="post">-->
+<!--		{% csrf_token %}-->
+<!--		{% for i in form %}-->
+<!--		<div class="mt-2">-->
+<!--			<label for="{{i.id_for_label}}">{{i}}</label>-->
+<!--		</div>-->
+<!--		{% endfor %}-->
+<!--		<button type="submit" class="btn btn-primary mt-2 mb-2">Add</button>-->
+<!--	</form>-->
+<!--</div>-->
+{% endblock admin-content %}

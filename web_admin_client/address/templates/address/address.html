@@ -1,0 +1,67 @@
+{% extends 'base_with_admin_menu.html' %}
+
+<!--Address table-->
+
+{% block admin-data %}
+	{% if content|length > 0 %}
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th class="col-1 text-start">#</th>
+				<th class="col-2 text-start">City</th>
+				<th class="col-3 text-start">Street</th>
+				<th class="col-1">Edit</th>
+				<th class="col-1">Delete</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for i in content %}
+				<tr>
+					<td class="col-1 text-start"><p>{{ forloop.counter }}.</p></td>
+					<td class="col-2 text-start"><p>{{ i.city }}</p></td>
+					<td class="col-3 text-start"><p>{{ i.street }}</p></td>
+					<td class="col-1">
+						<form method="post" action="{% url 'address_update' i.pk %}">
+							{% csrf_token %}
+							{{ form.as_p }}
+							<button type="submit" class="bi bi-pencil"></button>
+						</form>
+					</td>
+					<td class="col-1">
+						<form method="post" action="{% url 'address_delete' i.pk %}">
+							{% csrf_token %}
+							<button type="submit" class="bi bi-trash"></button>
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				{#			{% set count = content|length + 1 %}#}
+				<td class="col-1 text-start"><p>{{ content|length }}.</p></td>
+				<form action="{% url 'address' %}" method="post">
+					{% csrf_token %}
+					{% for i in form %}
+						<td><label for="{{ i.id_for_label }}">{{ i }}</label></td>
+					{% endfor %}
+					<td class="col-1">
+						<button type="submit" class="bi bi-plus-square"></button>
+					</td>
+					<td class="col-1"></td>
+				</form>
+			</tr>
+			</tbody>
+		</table>
+	{% else %}
+		<p class="text-center">Nope</p>
+	{% endif %}
+{% endblock admin-data %}
+
+<!--Add address form-->
+
+{#{% block admin-add-data-form %}#}
+{##}
+{#{% endblock admin-add-data-form %}#}
+
+{% block scripts %}
+	{#	<script src="/static/address.js"></script>#}
+{% endblock scripts %}

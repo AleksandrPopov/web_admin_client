@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block main-admin-block %}
+
+	<!--Admin menu-->
+
+	<nav class="navbar navbar-expand-md bg-body-tertiary">
+		<div class="col-2 text-start content-form-div pt-3 navbarSupportedContent collapse navbar-collapse">
+			{% for i in menu %}
+				<div class="admin-menu-item">
+					<a href="{{ i.url }}" class="admin-menu-text">{{ i.title }}</a>
+				</div>
+			{% endfor %}
+		</div>
+	</nav>
+
+	<!--Admin data block-->
+
+	<div class="col content-form-div">
+		<h2>{{ title }}</h2>
+
+		<!--	Admin data-->
+
+		<div class="admin-content">
+			{% block admin-data %}
+			{% endblock admin-data %}
+		</div>
+
+		<!--	Add admin data form-->
+
+		<div class="admin-content">
+			{% block admin-add-data-form %}
+			{% endblock admin-add-data-form %}
+		</div>
+	</div>
+
+{% endblock main-admin-block %}
