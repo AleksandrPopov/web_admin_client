@@ -21,7 +21,7 @@ html {
 .content-form-div {
     background-color: #d3d3d3;
     border: 1px solid #000000;
-    margin: 5px;
+    padding: 5px;
 }
 
 .admin-content {
@@ -42,9 +42,14 @@ html {
     list-style: none;
 }
 p {
-    margin: 5px;
+    padding: 5px;
     /*font-size: 20px;*/
 }
 .admin-menu-item {
     margin: 1em;
+}
+
+.content-form {
+    background-color: #d3d3d3;
+    border: 1px solid #000000;
 }

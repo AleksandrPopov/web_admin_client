@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
-{% block main-guest-block%}
-<h6>Login</h6>
-<form action="{% url 'login' %}" method="post">
-	{% csrf_token %}
-	{% for i in form %}
-	<div class="mt-2">
-		<label for="{{i.id_for_label}}">{{i}}</label>
+{% block main-guest-block %}
+	<div class="text-center">
+		<h5>Login</h5>
+		<form action="{% url 'login' %}" method="post">
+			{% csrf_token %}
+			{% for i in form %}
+				<div class="mt-2">
+					<label for="{{ i.id_for_label }}">{{ i }}</label>
+				</div>
+			{% endfor %}
+			<button type="submit" class="btn btn-primary mt-2 mb-2">Add</button>
+		</form>
 	</div>
-	{% endfor %}
-	<button type="submit" class="btn btn-primary mt-2 mb-2">Add</button>
-</form>
-<h1>{{title}}</h1>
 {% endblock main-guest-block %}
 

@@ -3,10 +3,9 @@ from django.views.generic import CreateView
 
 from categories.forms import AddCategoriesForm
 from categories.models import Categories
-from web_admin_client.utils import DataMixin
 
 
-class CategoriesView(DataMixin, CreateView):
+class CategoriesView(CreateView):
     form_class = AddCategoriesForm
     template_name = 'categories/categories.html'
     context_object_name = 'form'

@@ -3,15 +3,17 @@
 
 	<!--Admin menu-->
 
-	<nav class="navbar navbar-expand-md bg-body-tertiary">
-		<div class="col-2 text-start content-form-div pt-3 navbarSupportedContent collapse navbar-collapse">
-			{% for i in menu %}
-				<div class="admin-menu-item">
-					<a href="{{ i.url }}" class="admin-menu-text">{{ i.title }}</a>
-				</div>
-			{% endfor %}
-		</div>
-	</nav>
+	<div class="col-lg-2 content-form-div">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
+			<ul class="navbar-collapse collapse navbarSupportedContent row">
+				{% for i in menu %}
+					<li class="admin-menu-item">
+						<a href="{{ i.url }}" class="admin-menu-text">{{ i.title }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</div>
 
 	<!--Admin data block-->
 
@@ -23,14 +25,11 @@
 		<div class="admin-content">
 			{% block admin-data %}
 			{% endblock admin-data %}
-		</div>
+			{% block modals %}
+			{% endblock modals %}
 
-		<!--	Add admin data form-->
-
-		<div class="admin-content">
-			{% block admin-add-data-form %}
-			{% endblock admin-add-data-form %}
 		</div>
 	</div>
 
 {% endblock main-admin-block %}
+

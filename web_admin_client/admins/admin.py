@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .forms import AdminsForm
 from .models import *
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 
 
 class AuthAdmin(UserAdmin):
@@ -14,7 +14,7 @@ class AuthAdmin(UserAdmin):
             None,
             {
                 "classes": ("wide",),
-                "fields": ("username", "bot_id", "email", "contact", "password1", "password2"),
+                "fields": ("bot_id", "email", "contact", "password1", "password2"),
             },
         ),
     )
