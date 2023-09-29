@@ -1,19 +1,11 @@
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
-
-from categories.forms import AddCategoriesForm
 from categories.models import Categories
+from categories.serializers import CategoriesSerializer
+from rest_framework import viewsets
 
 
-class CategoriesView(CreateView):
-    form_class = AddCategoriesForm
-    template_name = 'categories/categories.html'
-    context_object_name = 'form'
-    success_url = reverse_lazy('categories')
+class CategoriesAPIView(viewsets.ModelViewSet):
+    queryset = Categories.objects.all()
+    serializer_class = CategoriesSerializer
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Categories'
-        context['content'] = Categories.objects.all()
-        return context
-
+    def get_queryset(self):
+        return Categories.objects.filter(admins_pk=self.request.user)

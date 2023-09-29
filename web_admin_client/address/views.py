@@ -3,7 +3,7 @@ from address.serializers import AddressSerializer
 from rest_framework import viewsets
 
 
-class AddressUpdateAPIView(viewsets.ModelViewSet):
+class AddressAPIView(viewsets.ModelViewSet):
     queryset = Address.objects.all()
     serializer_class = AddressSerializer
 

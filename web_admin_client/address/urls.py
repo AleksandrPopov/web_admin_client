@@ -4,7 +4,7 @@ from rest_framework import routers
 from .views import *
 
 router = routers.SimpleRouter()
-router.register(r'', AddressUpdateAPIView)
+router.register(r'', AddressAPIView, basename='address')
 
 urlpatterns = [
     # path('', AddressView.as_view(), name='address'),

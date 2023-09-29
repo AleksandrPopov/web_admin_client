@@ -1,26 +1,10 @@
-from django.shortcuts import render, redirect
-
-from services.forms import AddServicesForm
 from services.models import Services
-from web_admin_client.menu import menu
+from services.serializers import ServicesSerializer
+from rest_framework import viewsets
 
 
-def services(request):
-    if request.method == 'POST':
-        form = AddServicesForm(request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                return redirect('services')
-            except:
-                form.add_error(None, 'Error')
-    else:
-        form = AddServicesForm()
+class ServicesAPIView(viewsets.ModelViewSet):
+    serializer_class = ServicesSerializer
 
-    context = {
-        'menu': menu,
-        'title': 'Services',
-        'services': Services.objects.all(),
-        'form': form
-    }
-    return render(request, 'services/services.html', context=context)
+    def get_queryset(self):
+        return Services.objects.filter(categories_pk__admins_pk=self.request.user.pk)
